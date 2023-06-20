@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Item } from 'src/app/interfaces/iItem';
 
@@ -9,6 +9,7 @@ import { Item } from 'src/app/interfaces/iItem';
 })
 export class ItemComponent implements OnInit, OnChanges {
   @Input() dadosItem!: Item;
+  @Output() emitindoItemParaEditar = new EventEmitter();
 
   faPen = faPen;
   faTrash = faTrash
@@ -21,5 +22,8 @@ export class ItemComponent implements OnInit, OnChanges {
       
   }
 
+  editarItem(): void {
+    this.emitindoItemParaEditar.emit(this.dadosItem);
+  }
 
 }
