@@ -10,6 +10,7 @@ import { ListaDeCompraService } from './service/lista-de-compra.service';
 export class AppComponent implements OnInit{
   title = 'app-lista-de-compras';
   listaDeCompra!: Array<Item>
+  itemParaSerEditado! : Item;
 
   constructor(
     private listaService: ListaDeCompraService
@@ -19,5 +20,8 @@ export class AppComponent implements OnInit{
     this.listaDeCompra = this.listaService.getListaDeCompra();
   }
 
+  editarItem(item: Item){
+    this.itemParaSerEditado = item
+  }
 
 }
