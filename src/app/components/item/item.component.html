@@ -8,6 +8,6 @@
 <p class="description">{{dadosItem.nome}}</p>
 <div class="d-contents" *ngIf="!dadosItem.comprado">
   <fa-icon class="delete-icon" [icon]="faTrash" ></fa-icon>
-  <fa-icon class="edit-icon" [icon]="faPen" ></fa-icon>
+  <fa-icon class="edit-icon" [icon]="faPen" (click)="editarItem()" ></fa-icon>
 </div>
 <small class="date">{{dadosItem.data}}</small>
