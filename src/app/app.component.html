@@ -1,11 +1,11 @@
 <section class="main">
-  <input-item>
+  <input-item [itemQueVaiSerEditado]="itemParaSerEditado">
   </input-item>
   <div class="container">
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
       <div *ngFor="let item of listaDeCompra">
-        <item [dadosItem]="item"></item>
+        <item [dadosItem]="item" (emitindoItemParaEditar)="editarItem($event)"></item>
       </div>
     </div>
   </div>
