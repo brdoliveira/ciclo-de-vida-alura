@@ -10,6 +10,7 @@ import { Item } from 'src/app/interfaces/iItem';
 export class ItemComponent implements OnInit, OnChanges {
   @Input() dadosItem!: Item;
   @Output() emitindoItemParaEditar = new EventEmitter();
+  @Output() emitindoIdParaDeletar = new EventEmitter();
 
   faPen = faPen;
   faTrash = faTrash
@@ -18,12 +19,22 @@ export class ItemComponent implements OnInit, OnChanges {
 
   ngOnInit(): void { }
 
-  ngOnChanges(): void {
-      
-  }
+  ngOnChanges(): void { }
+
+  onDestroy(): void {
+    console.log("Item Deletado")
+   }
 
   editarItem(): void {
     this.emitindoItemParaEditar.emit(this.dadosItem);
+  }
+
+  deletarItem(): void {
+    this.emitindoIdParaDeletar.emit(this.dadosItem.id);
+  }
+
+  checarItem() {
+    this.dadosItem.comprado = !this.dadosItem.comprado;
   }
 
 }
