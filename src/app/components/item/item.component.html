@@ -4,10 +4,11 @@
   name="comprado"
   id="comprado"
   [checked]="dadosItem.comprado"
+  (change)="checarItem()"
 >
-<p class="description">{{dadosItem.nome}}</p>
+<p class="description" [ngClass]="{'line-through': (this.dadosItem.comprado == true)}">{{dadosItem.nome}}</p>
 <div class="d-contents" *ngIf="!dadosItem.comprado">
-  <fa-icon class="delete-icon" [icon]="faTrash" ></fa-icon>
+  <fa-icon class="delete-icon" [icon]="faTrash" (click)="deletarItem()" ></fa-icon>
   <fa-icon class="edit-icon" [icon]="faPen" (click)="editarItem()" ></fa-icon>
 </div>
 <small class="date">{{dadosItem.data}}</small>
